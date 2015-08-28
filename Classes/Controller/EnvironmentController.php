@@ -49,13 +49,17 @@ class EnvironmentController extends BaseController {
 	 * @return boolean
 	 */
 	public function renderGoogleAnalyticsAction() {
+		global $TSFE;
+		// If the setting "renderOnlyInProduction" is given true then we're loading the Google Analytics content only in production 
 		if (!(bool)$this->settings['googleAnalytics']['renderOnlyInProduction'] || self::isProductionEnvironment()) {
 			$content = '';
+			// Retrieves the Root Page Id
 			$rootPageId = _GeneralUtility::getRootPageId();
+			// Finds the page from the repository
 			if ($page = $this->pageRepository->findOneByUid($rootPageId)) {
+				// Retrieves the Google Analytics content
 				$content = strip_tags($page->getGoogleAnalyticsContent());
 				if ($content) {
-					global $TSFE;
 					if ((bool)$this->settings['googleAnalytics']['includeInFooter']) {
 						$TSFE->getPageRenderer()->addJsFooterInlineCode('Google Analytics', $content);
 					} else {
