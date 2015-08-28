@@ -119,7 +119,7 @@ class EnvironmentController extends BaseController {
 					$robots[] = 'Allow: /';
 				}
 				// Adds robots excluded pages
-				$this->collectRecursivelyExcludedAndDeletedPages($page);				
+				$this->collectRecursivelyRobotsExcludedPages($page);				
 				foreach ($this->robotsExcludedPages as $excludedPage) {
 					$robots[] = 'Disallow: '.$this->getFrontendUri($excludedPage->getUid());
 				}
@@ -138,13 +138,13 @@ class EnvironmentController extends BaseController {
 	 * @param \Ucreation\SiteEssentials\Domain\Model\Page $currentPage
 	 * @return void
 	 */
-	protected function collectRecursivelyExcludedAndDeletedPages(Page $currentPage) {
+	protected function collectRecursivelyRobotsExcludedPages(Page $currentPage) {
 		if ($currentPage->isRobotsExclude()) {
 			$this->robotsExcludedPages[] = $currentPage;
 		} else {
 			$subpages = $this->pageRepository->findByRobotsExcludedOrDeleted($currentPage->getUid());
 			foreach ($subpages as $subpage) {
-				$this->collectRecursivelyExcludedAndDeletedPages($subpage);
+				$this->collectRecursivelyRobotsExcludedPages($subpage);
 			}
 		}
 	}
