@@ -11,10 +11,10 @@ if (!defined('TYPO3_MODE')) {
 	'Ucreation.' . $_EXTKEY,
 	'Pi1',
 	array(
-		'Environment' => 'renderGoogleAnalytics',
+		'Environment' => 'renderGoogleAnalytics, renderRobotsContent',
 	),
 	array(
-		
+		'Environment' => 'renderRobotsContent',
 	)
 );
 
