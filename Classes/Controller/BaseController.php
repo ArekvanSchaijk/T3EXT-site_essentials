@@ -48,5 +48,22 @@ class BaseController extends ActionController {
 	public function initializeAction() {
 		$this->params = $this->request->getArguments();
 	}
+
+	/**
+	 * Get Frontend Uri
+	 *
+	 * @param integer $pageId
+	 * @param array $arguments
+	 * @return string
+	 */
+	protected function getFrontendUri($pageId, array $arguments = NULL) {
+		$uri = $this->controllerContext->getUriBuilder();
+		$uri->setTargetPageUid($pageId);
+		$uri->setUseCacheHash(FALSE);
+		if ($arguments) {
+			$uri->setArguments($arguments);
+		}
+		return '/'.rawurldecode($uri->build());		
+	}
 	
 }

@@ -25,6 +25,7 @@ namespace Ucreation\SiteEssentials\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Ucreation\SiteEssentials\Domain\Model\Page;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -34,5 +35,36 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  * @author Arek van Schaijk <info@ucreation.nl>
  */
 class PageRepository extends Repository {
+	
+ 	/**
+	 * Initialize Object
+	 *
+	 * @return void
+	 */
+	public function initializeObject() {
+		$defaultQuerySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
+		$defaultQuerySettings->setRespectStoragePage(FALSE);
+		$this->setDefaultQuerySettings($defaultQuerySettings);
+	}
+	
+	/**
+	 * Find By Robots Excluded Or Deleted
+	 *
+	 * @param integer $pid
+	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+	 */
+	public function findByRobotsExcludedOrDeleted($pid) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('pid', $pid),
+				$query->logicalOr(
+					$query->equals('doktype', Page::DOKTYPE_NORMAL),
+					$query->equals('doktype', Page::DOKTYPE_SHORTCUT)
+				)
+			)
+		);
+		return $query->execute();
+	}
 	
 }

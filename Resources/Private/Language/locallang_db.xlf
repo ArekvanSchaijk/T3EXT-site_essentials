@@ -9,6 +9,15 @@
       <trans-unit id="pages.tx_siteessentials_google_analytics_content">
         <source>Google Analytics Content</source>
       </trans-unit>
+	  <trans-unit id="pages.tx_siteessentials_robots_exclude">
+        <source>Exclude in Robots.txt</source>
+      </trans-unit>	
+	  <trans-unit id="pages.tx_siteessentials_robots_exclude.0">
+        <source>Enable</source>
+      </trans-unit>	 
+      <trans-unit id="pages.tx_siteessentials_robots_content">
+        <source>Robots Content</source>
+      </trans-unit>	  
     </body>
   </file>
 </xliff>

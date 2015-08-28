@@ -1,5 +1,12 @@
 plugin.tx_siteessentials {
 	settings {
+		robots {
+			pageTypeNum = 6010
+			disallowIfNotInProduction = 1
+			addUserAgentIfNotGiven = 1
+			allowAllPagesIfNoContentIsGiven = 1
+			notInProductionContentFilePath = EXT:site_essentials/Resources/Public/Robots/NotInProductionContent.txt
+		}
 		googleAnalytics {
 			renderOnlyInProduction = 1
 			includeInFooter = 1

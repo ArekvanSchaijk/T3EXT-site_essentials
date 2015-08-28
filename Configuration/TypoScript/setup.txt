@@ -4,6 +4,8 @@ config.tx_extbase.persistence.classes.Ucreation\SiteEssentials\Domain\Model\Page
 		tableName = pages
 		columns {
 			tx_siteessentials_google_analytics_content.mapOnProperty = googleAnalyticsContent
+			tx_siteessentials_robots_exclude.mapOnProperty = robotsExclude
+			tx_siteessentials_robots_content.mapOnProperty = robotsContent
 		}
 	}
 }
@@ -11,11 +13,45 @@ config.tx_extbase.persistence.classes.Ucreation\SiteEssentials\Domain\Model\Page
 # Plugin Configuration
 plugin.tx_siteessentials {
 	settings {
+		robots {
+			pageTypeNum = {$plugin.tx_siteessentials.settings.robots.pageTypeNum}
+			disallowIfNotInProduction = {$plugin.tx_siteessentials.settings.robots.disallowIfNotInProduction}
+			addUserAgentIfNotGiven = {$plugin.tx_siteessentials.settings.robots.addUserAgentIfNotGiven}
+			allowAllPagesIfNoContentIsGiven = {$plugin.tx_siteessentials.settings.robots.allowAllPagesIfNoContentIsGiven}
+			notInProductionContentFilePath = {$plugin.tx_siteessentials.settings.robots.notInProductionContentFilePath}
+		}
 		googleAnalytics {
 			renderOnlyInProduction = {$plugin.tx_siteessentials.settings.googleAnalytics.renderOnlyInProduction}
 			includeInFooter = {$plugin.tx_siteessentials.settings.googleAnalytics.includeInFooter}
 		}
 	}
+}
+
+# Robots Page Type Renderer
+robotstxt = PAGE
+robotstxt {
+    typeNum = {$plugin.tx_siteessentials.settings.robots.pageTypeNum}
+	10 = USER_INT
+    10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		pluginName = Pi1
+		extensionName = SiteEssentials
+		vendorName = Ucreation
+		controller = Environment
+		action = renderRobotsContent
+		switchableControllerActions {
+			Environment {
+				1 = renderRobotsContent
+			}
+		}
+    }
+    config {
+	    disableAllHeaderCode = 1
+	    additionalHeaders = Content-type:text/plain
+	    xhtml_cleaning = 0
+	    admPanel = 0
+	    debug = 0
+    }
 }
 
 # Google Analytics Renderer

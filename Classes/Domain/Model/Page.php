@@ -36,9 +36,73 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Page extends AbstractEntity {
 	
 	/**
+	 * @const integer
+	 */
+	const	DOKTYPE_NORMAL = 1,
+			DOKTYPE_SHORTCUT = 2;
+			
+	/**
+	 * @var integer
+	 */
+	protected $tstamp = 0;
+	
+	/**
+	 * @var integer
+	 */
+	protected $doktype = 0;
+	
+	/**
 	 * @var string
 	 */
 	protected $googleAnalyticsContent = '';
+	
+	/**
+	 * @var boolean
+	 */
+	protected $robotsExclude = FALSE;
+	
+	/**
+	 * @var string
+	 */
+	protected $robotsContent = '';
+	
+	/**
+	 * Get Tstamp
+	 *
+	 * @return integer
+	 */
+	public function getTstamp() {
+		return $this->tstamp;
+	}
+	
+	/**
+	 * Set Tstamp
+	 *
+	 * @param integer $tstamp
+	 * @return void
+	 */
+	public function setTstamp($tstamp) {
+		$this->tstamp = $tstamp;
+	}
+	
+	/**
+	 * Get Doktype
+	 *
+	 * @return integer
+	 */
+	public function getDoktype() {
+		return $this->doktype;
+	}
+	
+	/**
+	 * Set Doktype
+	 *
+	 * @param integer $doktype
+	 * @return void
+	 */
+	public function setDoktype($doktype) {
+		$this->doktype = $doktype;
+	}
 	
 	/**
 	 * Get Google Analytics Content
@@ -57,6 +121,43 @@ class Page extends AbstractEntity {
 	 */
 	public function setGoogleAnalyticsContent($googleAnalyticsContent) {
 		$this->googleAnalyticsContent = $googleAnalyticsContent;
+	}
+	
+	/**
+	 * Is Robots Exclude
+	 *
+	 * @return boolean
+	 */
+	public function isRobotsExclude() {
+		return $this->robotsExclude;
+	}
+	
+	/**
+	 * Set Robots Exclude
+	 *
+	 * @param boolean $robotsExclude
+	 * @return void
+	 */
+	public function setRobotsExclude($robotsExclude) {
+		$this->robotsExclude = $robotsExclude;	
+	}
+	
+	/**
+	 * Get Robots Content
+	 *
+	 * @return void
+	 */
+	public function getRobotsContent() {
+		return $this->robotsContent;	
+	}
+	
+	/**
+	 * Set Robots Content
+	 *
+	 * @return void
+	 */
+	public function setRobotsContent($robotsContent) {
+		$this->robotsContent = $robotsContent;	
 	}
 	
 }
