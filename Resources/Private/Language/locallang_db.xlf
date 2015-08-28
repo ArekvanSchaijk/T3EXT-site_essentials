@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T09:43:36Z" product-name="gss">
+    <header/>
+    <body>
+      <trans-unit id="tabs.siteessentials">
+        <source>Site Essentials</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_google_analytics_content">
+        <source>Google Analytics Content</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

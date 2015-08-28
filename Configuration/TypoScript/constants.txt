@@ -1,0 +1,8 @@
+plugin.tx_siteessentials {
+	settings {
+		googleAnalytics {
+			renderOnlyInProduction = 1
+			includeInFooter = 1
+		}
+	}
+}

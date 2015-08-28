@@ -1,0 +1,38 @@
+# Model to Table mapping
+config.tx_extbase.persistence.classes.Ucreation\SiteEssentials\Domain\Model\Page {
+	mapping {
+		tableName = pages
+		columns {
+			tx_siteessentials_google_analytics_content.mapOnProperty = googleAnalyticsContent
+		}
+	}
+}
+
+# Plugin Configuration
+plugin.tx_siteessentials {
+	settings {
+		googleAnalytics {
+			renderOnlyInProduction = {$plugin.tx_siteessentials.settings.googleAnalytics.renderOnlyInProduction}
+			includeInFooter = {$plugin.tx_siteessentials.settings.googleAnalytics.includeInFooter}
+		}
+	}
+}
+
+# Google Analytics Renderer
+page.6250 = USER
+page.6250 {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	pluginName = Pi1
+	extensionName = SiteEssentials
+	vendorName = Ucreation
+	controller = Environment
+	action = renderGoogleAnalytics
+	switchableControllerActions {
+		Environment {
+			1 = renderGoogleAnalytics
+		}
+	}
+}
+
+# Makes sure we always fall back to the default controller and action if the action can't be resolved
+config.tx_extbase.mvc.callDefaultActionIfActionCantBeResolved = 1
