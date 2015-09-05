@@ -70,5 +70,11 @@ page.6250 {
 	}
 }
 
+# Css Renderer
+page.6251 = USER_INT
+page.6251 {
+	userFunc = Ucreation\SiteEssentials\Utility\CascadingStyleSheetUtility->renderFile
+}
+
 # Makes sure we always fall back to the default controller and action if the action can't be resolved
 config.tx_extbase.mvc.callDefaultActionIfActionCantBeResolved = 1
