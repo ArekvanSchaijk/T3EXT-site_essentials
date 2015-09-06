@@ -65,5 +65,14 @@ class BaseController extends ActionController {
 		}
 		return '/'.rawurldecode($uri->build());		
 	}
+
+    /**
+     * Get TypoScript Frontend Controller
+     *
+     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+     */
+    protected function getTypoScriptFrontendController() {
+        return $GLOBALS['TSFE'];
+    }
 	
 }

@@ -51,11 +51,9 @@ class EnvironmentController extends BaseController {
 	/**
 	 * Render Google Analytics Action
 	 *
-	 * @global \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $TSFE
 	 * @return boolean
 	 */
 	public function renderGoogleAnalyticsAction() {
-		global $TSFE;
 		// If the setting "renderOnlyInProduction" is given true then we're loading the Google Analytics content only in production 
 		if (!(bool)$this->settings['googleAnalytics']['renderOnlyInProduction'] || self::isProductionEnvironment()) {
 			$content = '';
@@ -67,9 +65,9 @@ class EnvironmentController extends BaseController {
 				$content = strip_tags($page->getGoogleAnalyticsContent());
 				if ($content) {
 					if ((bool)$this->settings['googleAnalytics']['includeInFooter']) {
-						$TSFE->getPageRenderer()->addJsFooterInlineCode('Google Analytics', $content);
+						$this->getTypoScriptFrontendController()->getPageRenderer()->addJsFooterInlineCode('Google Analytics', $content);
 					} else {
-						$TSFE->getPageRenderer()->addJsInlineCode('Google Analytics', $content);
+                        $this->getTypoScriptFrontendController()->getPageRenderer()->addJsInlineCode('Google Analytics', $content);
 					}
 				}
 			}
@@ -80,12 +78,9 @@ class EnvironmentController extends BaseController {
 	/**
 	 * Render Robots Content Action
 	 *
-	 * @global \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $TSFE
-	 * @global array $TYPO3_CONF_VARS
 	 * @return void
 	 */
 	public function renderRobotsContentAction() {
-		global $TSFE, $TYPO3_CONF_VARS;
 		$content = '';
 		// If we're not in production we check for the setting "disallowIfNotInProduction" when we need to show the 'Not In Production Content'
 		if (!self::isProductionEnvironment() && (bool)$this->settings['robots']['disallowIfNotInProduction']) {

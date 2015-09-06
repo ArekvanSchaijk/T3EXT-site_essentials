@@ -36,12 +36,10 @@ class GeneralUtility {
 	/**
 	 * Get Root Page Id
 	 *
-	 * @global $TSFE
 	 * @return integer
 	 * @static
 	 */
 	static public function getRootPageId() {
-		global $TSFE;
 		return $GLOBALS['TSFE']->rootLine[0]['uid'];
 	}
 	

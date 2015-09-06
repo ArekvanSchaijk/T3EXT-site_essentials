@@ -51,7 +51,7 @@ class PageRepository extends Repository {
 	 * Find By Robots Excluded Or Deleted
 	 *
 	 * @param integer $pid
-	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult<\Ucreation\SiteEssentials\Domain\Model\Page>
 	 */
 	public function findByRobotsExcludedOrDeleted($pid) {
 		$query = $this->createQuery();
