@@ -36,7 +36,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class BrowserUtility {
 	
 	/**
-	 * In Internet Explorer 6
+	 * Is Internet Explorer 6
 	 *
 	 * @return array
 	 */
@@ -45,7 +45,7 @@ class BrowserUtility {
 	}
 	
 	/**
-	 * In Internet Explorer 7
+	 * Is Internet Explorer 7
 	 *
 	 * @return array
 	 */
@@ -54,7 +54,7 @@ class BrowserUtility {
 	}
 	
 	/**
-	 * In Internet Explorer 8
+	 * Is Internet Explorer 8
 	 *
 	 * @return array
 	 */
@@ -63,7 +63,7 @@ class BrowserUtility {
 	}
 	
 	/**
-	 * In Internet Explorer 9
+	 * Is Internet Explorer 9
 	 *
 	 * @return array
 	 */
@@ -72,7 +72,7 @@ class BrowserUtility {
 	}
 	
 	/**
-	 * In Internet Explorer 10
+	 * Is Internet Explorer 10
 	 *
 	 * @return array
 	 */
