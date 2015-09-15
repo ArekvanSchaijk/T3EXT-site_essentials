@@ -13,6 +13,9 @@ config.tx_extbase.persistence.classes.Ucreation\SiteEssentials\Domain\Model\Page
 # Plugin Configuration
 plugin.tx_siteessentials {
 	settings {
+		sitemap {
+			pageTypeNum = {$plugin.tx_siteessentials.settings.sitemap.pageTypeNum}
+		}
 		robots {
 			pageTypeNum = {$plugin.tx_siteessentials.settings.robots.pageTypeNum}
 			disallowIfNotInProduction = {$plugin.tx_siteessentials.settings.robots.disallowIfNotInProduction}

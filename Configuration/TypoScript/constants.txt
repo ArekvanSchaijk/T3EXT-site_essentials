@@ -1,5 +1,8 @@
 plugin.tx_siteessentials {
 	settings {
+		sitemap {
+			pageTypeNum = 6000
+		}
 		robots {
 			pageTypeNum = 6010
 			disallowIfNotInProduction = 1

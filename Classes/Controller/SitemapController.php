@@ -38,6 +38,8 @@ class SitemapController extends BaseController {
 	 *
 	 * @return void
 	 */
-	public function renderAction() {}
+	public function renderAction() {
+			
+	}
 	
 }
