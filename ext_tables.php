@@ -7,7 +7,14 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Site Essentials');
 
 // TCA requests a update when the "is_siteroot" field in the page table is changed
-$TCA['pages']['ctrl']['requestUpdate'] = 'is_siteroot';
+$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] = 'is_siteroot';
+
+// TCA requests a update when the "is_siteroot" field in the page table is changed
+if ($GLOBALS['TCA']['pages']['ctrl']['requestUpdate']) {
+	$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] .= ',is_siteroot';
+} else {
+	$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] = 'is_siteroot';
+}
 
 // TCA configuration to inject the "tx_siteessentials_google_analytics_content" and "tx_siteessentials_robots_content" field into the pages table
 $tempColumns = array(
