@@ -63,7 +63,11 @@ class BaseController extends ActionController {
 		if ($arguments) {
 			$uri->setArguments($arguments);
 		}
-		return '/'.rawurldecode($uri->build());		
+		$uri = rawurldecode($uri->build());
+		if (strpos(substr($uri, 0, 1), '/') !== FALSE) {
+			return $uri;
+		}
+		return '/'.$uri;		
 	}
 
     /**
