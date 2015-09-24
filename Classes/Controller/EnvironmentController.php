@@ -83,7 +83,11 @@ class EnvironmentController extends BaseController {
 	public function renderRobotsContentAction() {
 		$content = '';
 		// If we're not in production we check for the setting "disallowIfNotInProduction" when we need to show the 'Not In Production Content'
-		if (!self::isProductionEnvironment() && (bool)$this->settings['robots']['disallowIfNotInProduction']) {
+		if (
+			!(bool)GeneralUtility::_GP('show') &&
+			!self::isProductionEnvironment() &&
+			(bool)$this->settings['robots']['disallowIfNotInProduction']
+		) {
 			$notInProductionContentFilePath = GeneralUtility::getFileAbsFileName($this->settings['robots']['notInProductionContentFilePath']);
 			if (file_exists($notInProductionContentFilePath)) {
 				$content = file_get_contents($notInProductionContentFilePath);
