@@ -38,50 +38,48 @@ class CascadingStyleSheetUtility {
 	/**
 	 * Set Content
 	 *
-	 * @global array $TYPO3_CONF_VARS
 	 * @param string $content
+	 *
 	 * @return void
 	 * @static
 	 * @api
 	 */
 	static public function setContent($content) {
-		global $TYPO3_CONF_VARS;
-		if (!isset($TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content'])) {
-			$TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content'] = array();	
+		if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'])) {
+			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'] = array();	
 		}
-		$TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content'][] = $content;
+		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'][] = $content;
 	}
 	
 	/**
 	 * Set Background Image
 	 *
-	 * @global array $TYPO3_CONF_VARS
 	 * @param string $cssPath
 	 * @param string $backgroundImagePath
+	 *
 	 * @return void
 	 * @static
 	 * @api
 	 */
 	static public function setBackgroundImage($cssPath, $backgroundUrl) {
-		global $TYPO3_CONF_VARS;
-		if (!isset($TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content'])) {
-			$TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content'] = array();	
+		if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'])) {
+			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'] = array();	
 		}
-		$TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content'][]
+		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'][]
 			= $cssPath.chr(32).'{'.chr(32).'background-image: url(\'/'.$backgroundUrl.'\');'.chr(32).'}';
 	}
 	
 	/**
 	 * Render File
 	 *
-	 * @global \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $TSFE
-	 * @global array $TYPO3_CONF_VARS
 	 * @return void
+	 * @static
 	 */
 	static public function renderFile() {
-		global $TSFE, $TYPO3_CONF_VARS;
-		if ($cssLines = $TYPO3_CONF_VARS['EXTCONF']['site_essentials']['css_content']) {
-			$TSFE->getPageRenderer()->addCssFile(self::inline2TempFile(implode(LF, $cssLines), 'css'));	
+		if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content']) {
+			self::getTypoScriptFrontendController()->getPageRenderer()->addCssFile(
+				self::inline2TempFile(implode(LF, $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content']), 'css')
+			);	
 		}
 	}
 	
@@ -90,7 +88,9 @@ class CascadingStyleSheetUtility {
 	 *
 	 * @param string $str
 	 * @param string $ext
+	 *
 	 * @return string
+	 * @static
 	 */
 	static protected function inline2TempFile($str, $ext) {
 		// Create filename / tags:
@@ -111,5 +111,15 @@ class CascadingStyleSheetUtility {
 		}
 		return $script;
 	}
+	
+    /**
+     * Get TypoScript Frontend Controller
+     *
+     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+	 * @static
+     */
+    static protected function getTypoScriptFrontendController() {
+        return $GLOBALS['TSFE'];
+    }
 	
 }
