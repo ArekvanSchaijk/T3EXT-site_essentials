@@ -26,6 +26,7 @@ namespace Ucreation\SiteEssentials\Controller;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class BaseController
@@ -54,9 +55,10 @@ class BaseController extends ActionController {
 	 *
 	 * @param integer $pageId
 	 * @param array $arguments
+	 * @param boolean $addHost
 	 * @return string
 	 */
-	protected function getFrontendUri($pageId, array $arguments = NULL) {
+	protected function getFrontendUri($pageId, array $arguments = NULL, $addHost = FALSE) {
 		$uri = $this->controllerContext->getUriBuilder();
 		$uri->setTargetPageUid($pageId);
 		$uri->setUseCacheHash(FALSE);
@@ -65,9 +67,9 @@ class BaseController extends ActionController {
 		}
 		$uri = rawurldecode($uri->build());
 		if (strpos(substr($uri, 0, 1), '/') !== FALSE) {
-			return $uri;
+			return ($addHost ? GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') : NULL).$uri;
 		}
-		return '/'.$uri;		
+		return ($addHost ? GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') : NULL).'/'.$uri;		
 	}
 
     /**
