@@ -65,8 +65,11 @@ class CascadingStyleSheetUtility {
 		if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'])) {
 			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'] = array();	
 		}
+		if (strpos(substr($backgroundUrl, 0, 1), '/') === FALSE) {
+			$backgroundUrl = '/'.$backgroundUrl;	
+		}
 		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'][]
-			= $cssPath.chr(32).'{'.chr(32).'background-image: url(\'/'.$backgroundUrl.'\');'.chr(32).'}';
+			= $cssPath.chr(32).'{'.chr(32).'background-image: url(\''.$backgroundUrl.'\');'.chr(32).'}';
 	}
 	
 	/**
