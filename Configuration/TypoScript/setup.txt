@@ -47,6 +47,7 @@ robotstxt {
 				1 = renderRobotsContent
 			}
 		}
+		settings <= plugin.tx_siteessentials.settings
     }
     config {
 	    disableAllHeaderCode = 1
