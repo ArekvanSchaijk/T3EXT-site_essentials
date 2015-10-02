@@ -39,7 +39,7 @@ class Page extends AbstractEntity {
 	 * @const integer
 	 */
 	const	DOKTYPE_NORMAL = 1,
-			DOKTYPE_SHORTCUT = 2;
+			DOKTYPE_SHORTCUT = 4;
 			
 	/**
 	 * @var integer

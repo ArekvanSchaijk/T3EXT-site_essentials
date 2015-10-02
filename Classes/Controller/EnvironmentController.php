@@ -126,7 +126,7 @@ class EnvironmentController extends BaseController {
 			$content = implode(PHP_EOL, $robots);
 		}
 		// Parses the content directly in the output
-		// This is because there are user cases where TYPO3 adds additional information to the output
+		// This is because there are cases where TYPO3 adds additional information to the output
 		header('Content-Type: text/plain');
 		die($content);
 	}
