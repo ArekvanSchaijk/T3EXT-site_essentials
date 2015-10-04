@@ -36,18 +36,18 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Page extends AbstractEntity {
 	
 	/**
-	 * @const integer
+	 * @const int
 	 */
 	const	DOKTYPE_NORMAL = 1,
 			DOKTYPE_SHORTCUT = 4;
 			
 	/**
-	 * @var integer
+	 * @var int
 	 */
 	protected $tstamp = 0;
 	
 	/**
-	 * @var integer
+	 * @var int
 	 */
 	protected $doktype = 0;
 	
@@ -57,7 +57,7 @@ class Page extends AbstractEntity {
 	protected $googleAnalyticsContent = '';
 	
 	/**
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $robotsExclude = FALSE;
 	
@@ -69,7 +69,7 @@ class Page extends AbstractEntity {
 	/**
 	 * Get Tstamp
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getTstamp() {
 		return $this->tstamp;
@@ -78,7 +78,8 @@ class Page extends AbstractEntity {
 	/**
 	 * Set Tstamp
 	 *
-	 * @param integer $tstamp
+	 * @param int $tstamp
+	 *
 	 * @return void
 	 */
 	public function setTstamp($tstamp) {
@@ -88,7 +89,7 @@ class Page extends AbstractEntity {
 	/**
 	 * Get Doktype
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getDoktype() {
 		return $this->doktype;
@@ -97,7 +98,8 @@ class Page extends AbstractEntity {
 	/**
 	 * Set Doktype
 	 *
-	 * @param integer $doktype
+	 * @param int $doktype
+	 *
 	 * @return void
 	 */
 	public function setDoktype($doktype) {
@@ -117,6 +119,7 @@ class Page extends AbstractEntity {
 	 * Set Google Analytics Content
 	 *
 	 * @param string $googleAnalyticsContent
+	 *
 	 * @return void
 	 */
 	public function setGoogleAnalyticsContent($googleAnalyticsContent) {
@@ -126,7 +129,7 @@ class Page extends AbstractEntity {
 	/**
 	 * Is Robots Exclude
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isRobotsExclude() {
 		return $this->robotsExclude;
@@ -135,7 +138,8 @@ class Page extends AbstractEntity {
 	/**
 	 * Set Robots Exclude
 	 *
-	 * @param boolean $robotsExclude
+	 * @param bool $robotsExclude
+	 *
 	 * @return void
 	 */
 	public function setRobotsExclude($robotsExclude) {

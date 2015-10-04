@@ -32,6 +32,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @package Ucreation\SiteEssentials
  * @author Arek van Schaijk <info@ucreation.nl>
+ * @api
  */
 class BrowserUtility {
 	
@@ -39,6 +40,8 @@ class BrowserUtility {
 	 * Is Internet Explorer 6
 	 *
 	 * @return array
+	 * @static
+	 * @api
 	 */
 	static public function isInternetExplorer6() {		
 		return (preg_match('/(?i)msie [6]/', GeneralUtility::getIndpEnv('HTTP_USER_AGENT')) ? TRUE : FALSE);
@@ -48,6 +51,8 @@ class BrowserUtility {
 	 * Is Internet Explorer 7
 	 *
 	 * @return array
+	 * @static
+	 * @api
 	 */
 	static public function isInternetExplorer7() {		
 		return (preg_match('/(?i)msie [7]/', GeneralUtility::getIndpEnv('HTTP_USER_AGENT')) ? TRUE : FALSE);
@@ -57,6 +62,8 @@ class BrowserUtility {
 	 * Is Internet Explorer 8
 	 *
 	 * @return array
+	 * @static
+	 * @api
 	 */
 	static public function isInternetExplorer8() {		
 		return (preg_match('/(?i)msie [8]/', GeneralUtility::getIndpEnv('HTTP_USER_AGENT')) ? TRUE : FALSE);
@@ -66,6 +73,8 @@ class BrowserUtility {
 	 * Is Internet Explorer 9
 	 *
 	 * @return array
+	 * @static
+	 * @api
 	 */
 	static public function isInternetExplorer9() {		
 		return (preg_match('/(?i)msie [9]/', GeneralUtility::getIndpEnv('HTTP_USER_AGENT')) ? TRUE : FALSE);
@@ -75,6 +84,8 @@ class BrowserUtility {
 	 * Is Internet Explorer 10
 	 *
 	 * @return array
+	 * @static
+	 * @api
 	 */
 	static public function isInternetExplorer10() {		
 		return (preg_match('/(?i)msie [10]/', GeneralUtility::getIndpEnv('HTTP_USER_AGENT')) ? TRUE : FALSE);

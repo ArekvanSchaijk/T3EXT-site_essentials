@@ -9,9 +9,11 @@ if (!defined('TYPO3_MODE')) {
 	'Pi1',
 	array(
 		'Environment' => 'renderGoogleAnalytics, renderRobotsContent',
+		'Sitemap' => 'render',
 	),
 	array(
 		'Environment' => 'renderRobotsContent',
+		'Sitemap' => 'render',
 	)
 );
 

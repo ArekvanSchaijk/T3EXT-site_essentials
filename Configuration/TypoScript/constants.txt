@@ -1,17 +1,39 @@
 plugin.tx_siteessentials {
 	settings {
 		sitemap {
-			pageTypeNum = 6000
+			# cat=plugin.tx_siteessentials_sitemap/a/010; type=integer; label=Page Type Num:The Page "Type" number from where the sitemap is located
+			pageTypeNum = 325
+			# cat=plugin.tx_siteessentials_sitemap/a/020; type=integer; label=Pages Recursively Max Depth:The maximum depth to include pages (0 = no limit)
+			pagesRecursivelyMaxDepth = 0
+			# cat=plugin.tx_siteessentials_sitemap/a/030; type=string; label=Allewed Dok Types:Comma seperated list of allowed doktypes to include in the sitemap
+			allowedDokTypes = 1,4
+			# cat=plugin.tx_siteessentials_sitemap/a/040; type=boolean; label=Include Root Page:If set, the root page (homepage) will be included in the sitemap
+			includeRootPage = 1
+			# cat=plugin.tx_siteessentials_sitemap/a/050; type=boolean; label=Include Hide In Menu:If set, 'nav_hide' items will be included in the sitemap
+			includeHideInMenu = 1
+			# cat=plugin.tx_siteessentials_sitemap/a/060; type=boolean; label=Format Output:If set, the output will be formatted
+			formatOutput = 1
+			# cat=plugin.tx_siteessentials_sitemap/a/070; type=string; label=Date Format:String with the date format
+			dateFormat = c
+			# cat=plugin.tx_siteessentials_sitemap/a/080; type=options[Always=always,Hourly=hourly,Daily=daily,Weekly=weekly,Monthly=monthly,Yearly=yearly,Never=never]; label=Default Change Frequency
+			defaultChangeFrequency = monthly
 		}
 		robots {
-			pageTypeNum = 6010
+			# cat=plugin.tx_siteessentials_robots/a/010; type=integer; label=Page Type Num:The Page "Type" number from where the robots.txt is located
+			pageTypeNum = 326
+			# cat=plugin.tx_siteessentials_robots/a/020; type=boolean; label=Disable Not In Production:If set, the robots.txt will be disabled if not in a production context
 			disallowIfNotInProduction = 1
+			# cat=plugin.tx_siteessentials_robots/a/030; type=boolean; label=Add User Agent:If set, if the user agent is not given it will be automatically added
 			addUserAgentIfNotGiven = 1
+			# cat=plugin.tx_siteessentials_robots/a/040; type=boolean; label=Allow All Pages:If set, if no robots.txt content is given it will automatically add "Allow: /"
 			allowAllPagesIfNoContentIsGiven = 1
+			# cat=plugin.tx_siteessentials_robots/a/050; type=string; label=Not In Production File Path:The file that will be shown when the robots.txt is disabled
 			notInProductionContentFilePath = EXT:site_essentials/Resources/Public/Robots/NotInProductionContent.txt
 		}
 		googleAnalytics {
+			# cat=plugin.tx_siteessentials_googleanalytics/a/010; type=boolean; label=Render Only In Production:If set, the content will be shown only in a production context
 			renderOnlyInProduction = 1
+			# cat=plugin.tx_siteessentials_googleanalytics/a/020; type=boolean; label=Include In Footer:If set, the content will be added in the footer instead of the header
 			includeInFooter = 1
 		}
 	}

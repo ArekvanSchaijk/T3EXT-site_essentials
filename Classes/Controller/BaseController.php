@@ -35,27 +35,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @author Arek van Schaijk <info@ucreation.nl>
  */
 class BaseController extends ActionController {
-	
-	/**
-	 * @var array
-	 */
-	protected $params = NULL;
-	
-	/**
-	 * Initialize Action
-	 *
-	 * @return void
-	 */
-	public function initializeAction() {
-		$this->params = $this->request->getArguments();
-	}
 
 	/**
 	 * Get Frontend Uri
 	 *
-	 * @param integer $pageId
+	 * @param int $pageId
 	 * @param array $arguments
-	 * @param boolean $addHost
+	 * @param bool $addHost
+	 *
 	 * @return string
 	 */
 	protected function getFrontendUri($pageId, array $arguments = NULL, $addHost = FALSE) {
@@ -76,9 +63,20 @@ class BaseController extends ActionController {
      * Get TypoScript Frontend Controller
      *
      * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+	 * @static
      */
-    protected function getTypoScriptFrontendController() {
-        return $GLOBALS['TSFE'];
+    static protected function getTypoScriptFrontendController() {
+		return $GLOBALS['TSFE'];
     }
+	
+	/**
+	 * Get Database Connection
+	 *
+	 * @return \TYPO3\CMS\Core\Database\DatabaseConnection
+	 * @static
+	 */
+	static protected function getDatabaseConnection() {
+		return $GLOBALS['TYPO3_DB'];
+	}
 	
 }

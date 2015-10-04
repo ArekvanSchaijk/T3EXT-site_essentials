@@ -6,8 +6,17 @@
       <trans-unit id="tabs.siteessentials">
         <source>Site Essentials</source>
       </trans-unit>
+      <trans-unit id="palette.xml_sitemap">
+        <source>XML Sitemap</source>
+      </trans-unit>
+      <trans-unit id="palette.google_analytics">
+        <source>Google Analytics</source>
+      </trans-unit>
+      <trans-unit id="palette.robots_txt">
+        <source>Robots.txt</source>
+      </trans-unit>
       <trans-unit id="pages.tx_siteessentials_google_analytics_content">
-        <source>Google Analytics Content</source>
+        <source>Content</source>
       </trans-unit>
 	  <trans-unit id="pages.tx_siteessentials_robots_exclude">
         <source>Exclude in Robots.txt</source>
@@ -16,8 +25,53 @@
         <source>Enable</source>
       </trans-unit>	 
       <trans-unit id="pages.tx_siteessentials_robots_content">
-        <source>Robots Content</source>
+        <source>Content</source>
       </trans-unit>	  
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude">
+        <source>Exclude</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude.0">
+        <source>If set, this page will be excluded from showing in the sitemap</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude_type">
+        <source>Exclude Type</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude_type.recursively">
+        <source>Recursively</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude_type.thispage">
+        <source>Only this page</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency">
+        <source>Frequency</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.default">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.always">
+        <source>Always</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.hourly">
+        <source>Hourly</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.daily">
+        <source>Daily</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.weekly">
+        <source>Weekly</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.monthly">
+        <source>Monthly</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.yearly">
+        <source>Yearly</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.never">
+        <source>Never</source>
+      </trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_priority">
+        <source>Priority</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

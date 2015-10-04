@@ -32,6 +32,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @package Ucreation\SiteEssentials
  * @author Arek van Schaijk <info@ucreation.nl>
+ * @api
  */
 class CascadingStyleSheetUtility {
 	

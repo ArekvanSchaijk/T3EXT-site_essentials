@@ -26,7 +26,6 @@ namespace Ucreation\SiteEssentials\Controller;
  ***************************************************************/
 
 use Ucreation\SiteEssentials\Domain\Model\Page;
-use Ucreation\SiteEssentials\Utility\GeneralUtility as _GeneralUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -51,23 +50,23 @@ class EnvironmentController extends BaseController {
 	/**
 	 * Render Google Analytics Action
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function renderGoogleAnalyticsAction() {
 		// If the setting "renderOnlyInProduction" is given true then we're loading the Google Analytics content only in production 
 		if (!(bool)$this->settings['googleAnalytics']['renderOnlyInProduction'] || self::isProductionEnvironment()) {
 			$content = '';
 			// Retrieves the Root Page Id
-			$rootPageId = _GeneralUtility::getRootPageId();
+			$rootPageId = self::getTypoScriptFrontendController()->rootLine[0]['uid'];
 			// Finds the page from the repository
 			if ($page = $this->pageRepository->findOneByUid($rootPageId)) {
 				// Retrieves the Google Analytics content and strips the tags
 				$content = strip_tags($page->getGoogleAnalyticsContent());
 				if ($content) {
 					if ((bool)$this->settings['googleAnalytics']['includeInFooter']) {
-						$this->getTypoScriptFrontendController()->getPageRenderer()->addJsFooterInlineCode('Google Analytics', $content);
+						self::getTypoScriptFrontendController()->getPageRenderer()->addJsFooterInlineCode('Google Analytics', $content);
 					} else {
-                        $this->getTypoScriptFrontendController()->getPageRenderer()->addJsInlineCode('Google Analytics', $content);
+                        self::getTypoScriptFrontendController()->getPageRenderer()->addJsInlineCode('Google Analytics', $content);
 					}
 				}
 			}
@@ -96,7 +95,7 @@ class EnvironmentController extends BaseController {
 		} else {
 			$robots = array();
 			// Retrieves the Root Page Id
-			$rootPageId = _GeneralUtility::getRootPageId();
+			$rootPageId = self::getTypoScriptFrontendController()->rootLine[0]['uid'];
 			// Finds the page from the repository
 			if ($page = $this->pageRepository->findOneByUid($rootPageId)) {
 				$lines = array();
@@ -135,6 +134,7 @@ class EnvironmentController extends BaseController {
 	 * Collect Recursively Robots Excluded Pages
 	 *
 	 * @param \Ucreation\SiteEssentials\Domain\Model\Page $currentPage
+	 *
 	 * @return void
 	 */
 	protected function collectRecursivelyRobotsExcludedPages(Page $currentPage) {
@@ -151,7 +151,7 @@ class EnvironmentController extends BaseController {
 	/**
 	 * Is Production Environment
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	static protected function isProductionEnvironment() {
 		return GeneralUtility::getApplicationContext()->isProduction();

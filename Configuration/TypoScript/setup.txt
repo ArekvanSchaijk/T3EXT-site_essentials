@@ -14,7 +14,13 @@ config.tx_extbase.persistence.classes.Ucreation\SiteEssentials\Domain\Model\Page
 plugin.tx_siteessentials {
 	settings {
 		sitemap {
-			pageTypeNum = {$plugin.tx_siteessentials.settings.sitemap.pageTypeNum}
+			pagesRecursivelyMaxDepth = {$plugin.tx_siteessentials.settings.sitemap.pagesRecursivelyMaxDepth}
+			allowedDokTypes = {$plugin.tx_siteessentials.settings.sitemap.allowedDokTypes}
+			includeRootPage = {$plugin.tx_siteessentials.settings.sitemap.includeRootPage}
+			includeHideInMenu = {$plugin.tx_siteessentials.settings.sitemap.includeHideInMenu}
+			formatOutput = {$plugin.tx_siteessentials.settings.sitemap.formatOutput}
+			dateFormat = {$plugin.tx_siteessentials.settings.sitemap.dateFormat}
+			defaultChangeFrequency = {$plugin.tx_siteessentials.settings.sitemap.defaultChangeFrequency}
 		}
 		robots {
 			pageTypeNum = {$plugin.tx_siteessentials.settings.robots.pageTypeNum}
@@ -41,7 +47,6 @@ robotstxt {
 		extensionName = SiteEssentials
 		vendorName = Ucreation
 		controller = Environment
-		action = renderRobotsContent
 		switchableControllerActions {
 			Environment {
 				1 = renderRobotsContent
@@ -51,7 +56,34 @@ robotstxt {
     }
     config {
 	    disableAllHeaderCode = 1
-	    additionalHeaders = Content-type:text/plain
+	    additionalHeaders = Content-type: text/plain
+	    xhtml_cleaning = 0
+	    admPanel = 0
+	    debug = 0
+    }
+}
+
+# Robots Page Type Renderer
+xmlsitemap = PAGE
+xmlsitemap {
+    typeNum = {$plugin.tx_siteessentials.settings.sitemap.pageTypeNum}
+	10 = USER_INT
+    10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		pluginName = Pi1
+		extensionName = SiteEssentials
+		vendorName = Ucreation
+		controller = Sitemap
+		switchableControllerActions {
+			Sitemap {
+				1 = render
+			}
+		}
+		settings <= plugin.tx_siteessentials.settings
+    }
+    config {
+	    disableAllHeaderCode = 1
+	    additionalHeaders = Content-type: Content-type: application/xml
 	    xhtml_cleaning = 0
 	    admPanel = 0
 	    debug = 0

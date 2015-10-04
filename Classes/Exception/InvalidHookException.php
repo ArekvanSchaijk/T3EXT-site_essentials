@@ -1,5 +1,5 @@
 <?php
-namespace Ucreation\SiteEssentials\Utility;
+namespace Ucreation\SiteEssentials\Exception;
 
 /***************************************************************
  *  Copyright notice
@@ -24,23 +24,13 @@ namespace Ucreation\SiteEssentials\Utility;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+ 
 /**
- * Class GeneralUtility
+ * Class InvalidHookException
  *
  * @package Ucreation\SiteEssentials
  * @author Arek van Schaijk <info@ucreation.nl>
  */
-class GeneralUtility {
-	
-	/**
-	 * Get Root Page Id
-	 *
-	 * @return integer
-	 * @static
-	 */
-	static public function getRootPageId() {
-		return $GLOBALS['TSFE']->rootLine[0]['uid'];
-	}
+class InvalidHookException extends \Ucreation\TemplateVeenendaal\Exception {
 	
 }
