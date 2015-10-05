@@ -206,13 +206,11 @@ class ImageService {
 		$this->treatIdAsReference = $treatIdAsReference;
 		return $this;
 	}
-	
+
 	/**
 	 * Process
 	 *
 	 * @return string
-	 *
-	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
 	public function process() {
@@ -226,6 +224,7 @@ class ImageService {
 					'minHeight'	=> $this->minHeight,
 					'maxWidth'	=> $this->maxWidth,
 					'maxHeight'	=> $this->maxHeight,
+					'crop'		=> $this->image->getOriginalResource()->getReferenceProperty('crop'),
 				)
 			)
 		);
