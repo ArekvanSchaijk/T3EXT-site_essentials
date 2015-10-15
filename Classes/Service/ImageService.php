@@ -214,18 +214,21 @@ class ImageService {
 	 * @api
 	 */
 	public function process() {
+		$options = array(
+			'width'		=> $this->width,
+			'height'	=> $this->height,
+			'minWidth'	=> $this->minWidth,
+			'minHeight'	=> $this->minHeight,
+			'maxWidth'	=> $this->maxWidth,
+			'maxHeight'	=> $this->maxHeight,
+		);
+		if (version_compare(TYPO3_branch, '7.0', '>=')) {
+			$options['crop'] = $this->image->getOriginalResource()->getReferenceProperty('crop');
+		}
 		$this->lastProcessedImageUri = $this->imageService->getImageUri(
 			$this->imageService->applyProcessingInstructions(
 				$this->imageService->getImage($this->src, $this->image, $this->treatIdAsReference),
-				array(
-					'width'		=> $this->width,
-					'height'	=> $this->height,
-					'minWidth'	=> $this->minWidth,
-					'minHeight'	=> $this->minHeight,
-					'maxWidth'	=> $this->maxWidth,
-					'maxHeight'	=> $this->maxHeight,
-					'crop'		=> $this->image->getOriginalResource()->getReferenceProperty('crop'),
-				)
+				$options
 			)
 		);
 		return $this->reset();
