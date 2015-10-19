@@ -42,7 +42,6 @@ class BaseController extends ActionController {
 	 * @param int $pageId
 	 * @param array $arguments
 	 * @param bool $addHost
-	 *
 	 * @return string
 	 */
 	protected function getFrontendUri($pageId, array $arguments = NULL, $addHost = FALSE) {

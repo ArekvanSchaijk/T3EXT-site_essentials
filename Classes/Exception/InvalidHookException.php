@@ -31,6 +31,6 @@ namespace Ucreation\SiteEssentials\Exception;
  * @package Ucreation\SiteEssentials
  * @author Arek van Schaijk <info@ucreation.nl>
  */
-class InvalidHookException extends \Ucreation\TemplateVeenendaal\Exception {
+class InvalidHookException extends \Ucreation\SiteEssentials\Exception {
 	
 }

@@ -133,7 +133,6 @@ class SitemapController extends BaseController {
 	 *
 	 * @param int $pageId
 	 * @param int $level
-	 *
 	 * @return void
 	 */
 	protected function collectPagesRecursively($pageId, $level = 1) {
@@ -155,7 +154,6 @@ class SitemapController extends BaseController {
 	 *
 	 * @param array $page
 	 * @param int $level
-	 *
 	 * @return void
 	 */
 	protected function storePageAndCollectSubpages($page, $level) {
@@ -163,7 +161,7 @@ class SitemapController extends BaseController {
 		if ($this->canPageBeIncluded($page)) {
 			$this->pages[] = $page;	
 		}
-		if (!$page['exclude'] || $page['exclude_type'] != \Ucreation\SiteEssentials\Utility\SitemapUtility::RECURSION_RECURSIVELY) {
+		if (!$page['exclude'] || $page['exclude_type'] != SitemapUtility::RECURSION_RECURSIVELY) {
 			if (
 				!$this->settings['sitemap']['pagesRecursivelyMaxDepth'] ||
 				!$level ||
@@ -178,7 +176,6 @@ class SitemapController extends BaseController {
 	 * Can Page Be Included
 	 *
 	 * @param array $page
-	 *
 	 * @return bool
 	 */
 	protected function canPageBeIncluded(array $page) {
@@ -235,7 +232,6 @@ class SitemapController extends BaseController {
 	 * Is Dok Type Allowed
 	 *
 	 * @param int $dokType
-	 *
 	 * @return bool
 	 */
 	protected function isDokTypeAllowed($dokType) {
@@ -255,7 +251,7 @@ class SitemapController extends BaseController {
 			$this->addItem(
 				$this->getFrontendUri((int)$page['uid'], NULL, TRUE),
 				(int)$page['timestamp'],
-				\Ucreation\SiteEssentials\Utility\SitemapUtility::getChangeFrequency(
+				SitemapUtility::getChangeFrequency(
 					$page['change_frequency'],
 					$this->settings['sitemap']['defaultChangeFrequency']
 				),
@@ -267,11 +263,10 @@ class SitemapController extends BaseController {
 	/**
 	 * Add Item
 	 *
-	 * @param string $url
+	 * @param string $loc
 	 * @param int $timestamp
 	 * @param string $changeFrequency
 	 * @param float $priority
-	 *
 	 * @return void
 	 */
 	protected function addItem($loc, $timestamp, $changeFrequency, $priority) {

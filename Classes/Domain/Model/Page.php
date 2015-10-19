@@ -79,7 +79,6 @@ class Page extends AbstractEntity {
 	 * Set Tstamp
 	 *
 	 * @param int $tstamp
-	 *
 	 * @return void
 	 */
 	public function setTstamp($tstamp) {
@@ -99,7 +98,6 @@ class Page extends AbstractEntity {
 	 * Set Doktype
 	 *
 	 * @param int $doktype
-	 *
 	 * @return void
 	 */
 	public function setDoktype($doktype) {
@@ -119,7 +117,6 @@ class Page extends AbstractEntity {
 	 * Set Google Analytics Content
 	 *
 	 * @param string $googleAnalyticsContent
-	 *
 	 * @return void
 	 */
 	public function setGoogleAnalyticsContent($googleAnalyticsContent) {
@@ -139,7 +136,6 @@ class Page extends AbstractEntity {
 	 * Set Robots Exclude
 	 *
 	 * @param bool $robotsExclude
-	 *
 	 * @return void
 	 */
 	public function setRobotsExclude($robotsExclude) {
@@ -149,7 +145,7 @@ class Page extends AbstractEntity {
 	/**
 	 * Get Robots Content
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function getRobotsContent() {
 		return $this->robotsContent;	

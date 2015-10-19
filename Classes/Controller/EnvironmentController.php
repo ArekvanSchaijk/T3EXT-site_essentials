@@ -134,7 +134,6 @@ class EnvironmentController extends BaseController {
 	 * Collect Recursively Robots Excluded Pages
 	 *
 	 * @param \Ucreation\SiteEssentials\Domain\Model\Page $currentPage
-	 *
 	 * @return void
 	 */
 	protected function collectRecursivelyRobotsExcludedPages(Page $currentPage) {

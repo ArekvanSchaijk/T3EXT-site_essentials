@@ -86,7 +86,6 @@ class SitemapService {
 	 * Get Xml
 	 *
 	 * @param bool $formatOutput
-	 *
 	 * @return string
 	 */
 	public function getXml($formatOutput = TRUE) {

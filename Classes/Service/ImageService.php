@@ -25,6 +25,8 @@ namespace Ucreation\SiteEssentials\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Ucreation\SiteEssentials\Utility\CascadingStyleSheetUtility;
+
 /**
  * Class ImageService
  *
@@ -94,7 +96,6 @@ class ImageService {
 	 * Set Src
 	 *
 	 * @param string $src
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -107,7 +108,6 @@ class ImageService {
 	 * Set Image
 	 *
 	 * @param FileInterface|AbstractFileFolder $image
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -120,7 +120,6 @@ class ImageService {
 	 * Set Width
 	 *
 	 * @param string $width
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -133,7 +132,6 @@ class ImageService {
 	 * Set Height
 	 *
 	 * @param string $height
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -146,7 +144,6 @@ class ImageService {
 	 * Set Min Width
 	 *
 	 * @param int $minWidth
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -159,7 +156,6 @@ class ImageService {
 	 * Set Min Height
 	 *
 	 * @param int $minHeight
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -172,7 +168,6 @@ class ImageService {
 	 * Set Max Width
 	 *
 	 * @param int $maxWidth
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -185,7 +180,6 @@ class ImageService {
 	 * Set Max Height
 	 *
 	 * @param int $maxHeight
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -198,7 +192,6 @@ class ImageService {
 	 * Set Treat Id As Reference
 	 *
 	 * @param bool $treatIdAsReference
-	 *
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
@@ -268,11 +261,10 @@ class ImageService {
 	 * Write In Css
 	 *
 	 * @param string $cssPath
-	 *
 	 * @return void
 	 */
 	public function writeInCss($cssPath) {
-		\Ucreation\SiteEssentials\Utility\CascadingStyleSheetUtility::setBackgroundImage($cssPath, $this->lastProcessedImageUri);
+		CascadingStyleSheetUtility::setBackgroundImage($cssPath, $this->lastProcessedImageUri);
 	}
 	
 }

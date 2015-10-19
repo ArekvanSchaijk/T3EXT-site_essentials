@@ -40,7 +40,6 @@ class CascadingStyleSheetUtility {
 	 * Set Content
 	 *
 	 * @param string $content
-	 *
 	 * @return void
 	 * @static
 	 * @api
@@ -57,7 +56,6 @@ class CascadingStyleSheetUtility {
 	 *
 	 * @param string $cssPath
 	 * @param string $backgroundImagePath
-	 *
 	 * @return void
 	 * @static
 	 * @api
@@ -92,7 +90,6 @@ class CascadingStyleSheetUtility {
 	 *
 	 * @param string $str
 	 * @param string $ext
-	 *
 	 * @return string
 	 * @static
 	 */

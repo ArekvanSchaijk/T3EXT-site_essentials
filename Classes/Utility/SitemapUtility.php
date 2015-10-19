@@ -76,7 +76,6 @@ class SitemapUtility {
 	 *
 	 * @param int $changeFrequency
 	 * @param string $default
-	 *
 	 * @return string
 	 * @static
 	 * @api
@@ -95,7 +94,6 @@ class SitemapUtility {
 	 * Register Page Field
 	 *
 	 * @param string $fieldName
-	 *
 	 * @return void
 	 * @static
 	 * @api
@@ -122,7 +120,6 @@ class SitemapUtility {
 	 *
 	 * @param string $hookName
 	 * @param string $userFunc
-	 *
 	 * @return void
 	 * @static
 	 * @api
@@ -138,7 +135,6 @@ class SitemapUtility {
 	 * Get Registred Hook Objects
 	 *
 	 * @param string $hookName
-	 *
 	 * @return array
 	 * @static
 	 */
