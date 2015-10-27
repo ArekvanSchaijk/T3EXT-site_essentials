@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T09:43:36Z" product-name="gss">
+    <header/>
+    <body>
+      <trans-unit id="tabs.siteessentials">
+        <source>Site Essentials</source> <target></target></trans-unit>
+      <trans-unit id="palette.xml_sitemap">
+        <source>XML Sitemap</source> <target></target></trans-unit>
+      <trans-unit id="palette.google_analytics">
+        <source>Google Analytics</source> <target></target></trans-unit>
+      <trans-unit id="palette.robots_txt">
+        <source>Robots.txt</source> <target></target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_google_analytics_content">
+        <source>Content</source> <target></target></trans-unit>
+	  <trans-unit id="pages.tx_siteessentials_robots_exclude" approved="yes">
+        <source>Exclude in Robots.txt</source> <target state="translated">Uitsluiten in Robots.txt</target></trans-unit>	
+	  <trans-unit id="pages.tx_siteessentials_robots_exclude.0" approved="yes">
+        <source>Enable</source> <target state="translated">Inschakelen</target></trans-unit>	 
+      <trans-unit id="pages.tx_siteessentials_robots_content">
+        <source>Content</source> <target></target></trans-unit>	  
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude" approved="yes">
+        <source>Exclude</source> <target state="translated">Uitschakelen</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude.0" approved="yes">
+        <source>If set, this page will be excluded from showing in the sitemap</source> <target state="translated">Indien gezet, deze pagina wordt uitgesloten van weergave in de sitemap</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude_type" approved="yes">
+        <source>Exclude Type</source> <target state="translated">Uitschakel soort</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude_type.recursively" approved="yes">
+        <source>Recursively</source> <target state="translated">Recursief</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_exclude_type.thispage" approved="yes">
+        <source>Only this page</source> <target state="translated">Alleen deze pagina</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency" approved="yes">
+        <source>Frequency</source> <target state="translated">Frequentie</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.default" approved="yes">
+        <source>Default</source> <target state="translated">Standaard</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.always" approved="yes">
+        <source>Always</source> <target state="translated">Altijd</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.hourly" approved="yes">
+        <source>Hourly</source> <target state="translated">Ieder uur</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.daily" approved="yes">
+        <source>Daily</source> <target state="translated">Dagelijks</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.weekly" approved="yes">
+        <source>Weekly</source> <target state="translated">Wekelijks</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.monthly" approved="yes">
+        <source>Monthly</source> <target state="translated">Maandelijks</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.yearly" approved="yes">
+        <source>Yearly</source> <target state="translated">Jaarlijks</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_change_frequency.never" approved="yes">
+        <source>Never</source> <target state="translated">Nooit</target></trans-unit>
+      <trans-unit id="pages.tx_siteessentials_sitemap_priority" approved="yes">
+        <source>Priority</source> <target state="translated">Prioriteit</target></trans-unit>
+    </body>
+  </file>
+</xliff>
