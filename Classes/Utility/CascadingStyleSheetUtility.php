@@ -51,8 +51,11 @@ class CascadingStyleSheetUtility {
 	 * @api
 	 */
 	static public function setBackgroundImage($cssPath, $backgroundUrl) {
+        if (strpos(substr($backgroundUrl, 0, 1), '/') === FALSE) {
+            $backgroundUrl = '/'.$backgroundUrl;    
+        }
 		$css = self::getCssStorage();
-		$css[md5($cssPath.$backgroundUrl)] = $cssPath.chr(32).'{'.chr(32).'background-image: url(\''.$backgroundUrl.'\');'.chr(32).'}';
+		$css[md5($cssPath)] = $cssPath.chr(32).'{background-image: url(\''.$backgroundUrl.'\')}';
 		self::writeCssStorage($css);
 	}
 	
