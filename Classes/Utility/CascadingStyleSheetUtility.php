@@ -36,6 +36,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class CascadingStyleSheetUtility {
 	
+	/**
+	 * @const string
+	 */
 	const STORAGE_FILE_PATH = 'typo3temp/site_essentials_storage.txt';
 	
 	/**
