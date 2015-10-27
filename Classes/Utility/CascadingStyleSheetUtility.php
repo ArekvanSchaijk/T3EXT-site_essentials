@@ -36,20 +36,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class CascadingStyleSheetUtility {
 	
-	/**
-	 * Set Content
-	 *
-	 * @param string $content
-	 * @return void
-	 * @static
-	 * @api
-	 */
-	static public function setContent($content) {
-		if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'])) {
-			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'] = array();	
-		}
-		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'][] = $content;
-	}
+	const STORAGE_FILE_PATH = 'typo3temp/site_essentials_storage.txt';
 	
 	/**
 	 * Set Background Image
@@ -61,14 +48,9 @@ class CascadingStyleSheetUtility {
 	 * @api
 	 */
 	static public function setBackgroundImage($cssPath, $backgroundUrl) {
-		if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'])) {
-			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'] = array();	
-		}
-		if (strpos(substr($backgroundUrl, 0, 1), '/') === FALSE) {
-			$backgroundUrl = '/'.$backgroundUrl;	
-		}
-		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content'][]
-			= $cssPath.chr(32).'{'.chr(32).'background-image: url(\''.$backgroundUrl.'\');'.chr(32).'}';
+		$css = self::getCssStorage();
+		$css[md5($cssPath.$backgroundUrl)] = $cssPath.chr(32).'{'.chr(32).'background-image: url(\''.$backgroundUrl.'\');'.chr(32).'}';
+		self::writeCssStorage($css);
 	}
 	
 	/**
@@ -78,12 +60,13 @@ class CascadingStyleSheetUtility {
 	 * @static
 	 */
 	static public function renderFile() {
-		if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content']) {
+		$css = self::getCssStorage();
+		if ($css) {
 			self::getTypoScriptFrontendController()->getPageRenderer()->addCssFile(
-				self::inline2TempFile(implode(LF, $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['css_content']), 'css')
-			);	
+				self::inline2TempFile(implode(LF, $css), 'css')
+			);
 		}
-	}
+	}	
 	
 	/**
 	 * Inline 2 Temp File
@@ -98,16 +81,16 @@ class CascadingStyleSheetUtility {
 		$script = '';
 		switch ($ext) {
 			case 'js':
-				$script = 'typo3temp/site_essentials_' . substr(md5($str), 0, 10) . '.js';
+				$script = 'typo3temp/site_essentials_'.substr(md5($str), 0, 10) . '.js';
 				break;
 			case 'css':
-				$script = 'typo3temp/site_essentials_' . substr(md5($str), 0, 10) . '.css';
+				$script = 'typo3temp/site_essentials_'.substr(md5($str), 0, 10) . '.css';
 				break;
 		}
 		// Write file:
 		if ($script) {
 			if (!@is_file((PATH_site . $script))) {
-				GeneralUtility::writeFile(PATH_site . $script, $str);
+				GeneralUtility::writeFile(PATH_site.$script, $str);
 			}
 		}
 		return $script;
@@ -122,5 +105,30 @@ class CascadingStyleSheetUtility {
     static protected function getTypoScriptFrontendController() {
         return $GLOBALS['TSFE'];
     }
+	
+	/**
+	 * Get Css Storage
+	 *
+	 * @return array
+	 * @static
+	 */
+	static protected function getCssStorage() {
+		$storageFilePath = PATH_site.self::STORAGE_FILE_PATH;
+		if (file_exists($storageFilePath)) {
+			return unserialize(file_get_contents($storageFilePath));
+		}
+		return array();
+	}
+	
+	/**
+	 * Write Css Storage
+	 *
+	 * @return void
+	 * @static
+	 */
+	static protected function writeCssStorage(array $css) {
+		$storageFilePath = PATH_site.self::STORAGE_FILE_PATH;
+		GeneralUtility::writeFile($storageFilePath, serialize($css));
+	}
 	
 }
