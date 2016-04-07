@@ -25,6 +25,7 @@ namespace Ucreation\SiteEssentials\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Ucreation\SiteEssentials\Utility\CascadingStyleSheetUtility;
 
 /**
@@ -47,37 +48,37 @@ class ImageService {
 	protected $src = NULL;
 	
 	/**
-	 * @var \TYPO3\CMS\Core\Resource\FileInterface|null
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
 	 */
 	protected $image = NULL;
 	
 	/**
-	 * @var string|null
+	 * @var string
 	 */
 	protected $width = NULL;
 
 	/**
-	 * @var string|null
+	 * @var string
 	 */
 	protected $height = NULL;
 	
 	/**
-	 * @var int|null
+	 * @var int
 	 */
 	protected $minWidth = NULL;
 	
 	/**
-	 * @var int|null
+	 * @var int
 	 */
 	protected $minHeight = NULL;
 	
 	/**
-	 * @var int|null
+	 * @var int
 	 */
 	protected $maxWidth = NULL;
 	
 	/**
-	 * @var int|null
+	 * @var int
 	 */
 	protected $maxHeight = NULL;
 	
@@ -87,7 +88,7 @@ class ImageService {
 	protected $treatIdAsReference = FALSE;
 	
 	/**
-	 * @var \TYPO3\CMS\Extbase\Service\ImageService|null
+	 * @var \TYPO3\CMS\Extbase\Service\ImageService
 	 * @inject
 	 */
 	protected $imageService = NULL;
@@ -107,11 +108,11 @@ class ImageService {
 	/**
 	 * Set Image
 	 *
-	 * @param \TYPO3\CMS\Core\Resource\FileInterface $image
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
-	public function setImage($image) {
+	public function setImage(FileReference $image) {
 		$this->image = $image;
 		return $this;
 	}
