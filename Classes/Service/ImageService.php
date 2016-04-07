@@ -37,47 +37,47 @@ use Ucreation\SiteEssentials\Utility\CascadingStyleSheetUtility;
 class ImageService {
 	
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	protected $lastProcessedImageUri = NULL;
 	
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	protected $src = NULL;
 	
 	/**
-	 * @var FileInterface|AbstractFileFolder
+	 * @var \TYPO3\CMS\Core\Resource\FileInterface|null
 	 */
 	protected $image = NULL;
 	
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	protected $width = NULL;
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	protected $height = NULL;
 	
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	protected $minWidth = NULL;
 	
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	protected $minHeight = NULL;
 	
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	protected $maxWidth = NULL;
 	
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	protected $maxHeight = NULL;
 	
@@ -87,7 +87,7 @@ class ImageService {
 	protected $treatIdAsReference = FALSE;
 	
 	/**
-	 * @var \TYPO3\CMS\Extbase\Service\ImageService
+	 * @var \TYPO3\CMS\Extbase\Service\ImageService|null
 	 * @inject
 	 */
 	protected $imageService = NULL;
@@ -107,7 +107,7 @@ class ImageService {
 	/**
 	 * Set Image
 	 *
-	 * @param FileInterface|AbstractFileFolder $image
+	 * @param \TYPO3\CMS\Core\Resource\FileInterface $image
 	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
