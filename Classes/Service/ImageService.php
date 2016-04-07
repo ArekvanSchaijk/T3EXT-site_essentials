@@ -187,6 +187,24 @@ class ImageService {
 		$this->maxHeight = $maxHeight;
 		return $this;
 	}
+
+	/**
+	 * Set Image Settings
+	 *
+	 * @param array $imageSettings
+	 * @return \Ucreation\SiteEssentials\Service\ImageService
+	 */
+	public function setImageSettings(array $imageSettings) {
+		foreach ($imageSettings as $key => $value) {
+			if ($value) {
+				$methodName = 'set'.ucfirst($key);
+				if (method_exists($this, $methodName)) {
+					$this->$methodName($value);
+				}
+			}
+		}
+		return $this;
+	}
 	
 	/**
 	 * Set Treat Id As Reference
@@ -203,7 +221,7 @@ class ImageService {
 	/**
 	 * Process
 	 *
-	 * @return string
+	 * @return \Ucreation\SiteEssentials\Service\ImageService
 	 * @api
 	 */
 	public function process() {
