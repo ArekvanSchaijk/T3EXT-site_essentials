@@ -69,8 +69,13 @@ class SitemapController extends BaseController {
 	 *
 	 * @return void
 	 * @throws \Ucreation\SiteEssentials\Exception\InvalidHookException
+	 * @throws \Ucreation\SiteEssentials\Exception\SitemapException
 	 */
 	public function renderAction() {
+		$extConf = SitemapUtility::getExtensionConfiguration();
+		if (!(bool)$extConf['enableXmlSitemap']) {
+			throw new Exception\SitemapException('The XML Sitemap functionality is disabled in the extension configuration');
+		}
 		// Gets the root page
 		$rootPage = $this->getRootPage();		
 		// Collect Pages Recursively

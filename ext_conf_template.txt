@@ -1,0 +1,2 @@
+# cat=basic; type=boolean; label=Enable XML Sitemap:If checked, XML Sitemap functionallity will be loaded in the TYPO3 Back-end
+enableXmlSitemap = 1

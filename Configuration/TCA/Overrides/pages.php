@@ -3,11 +3,21 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
+// Gets the extension configuration
+$extConf = \Ucreation\SiteEssentials\Utility\SitemapUtility::getExtensionConfiguration();
+$sitemapFields = [
+	'tx_siteessentials_sitemap_exclude',
+	'tx_siteessentials_sitemap_exclude_type',
+	'tx_siteessentials_sitemap_change_frequency',
+	'tx_siteessentials_sitemap_priority'
+];
+$enableSitemapFunctionality = (bool)$extConf['enableXmlSitemap'];
+
 // TCA requests a update when the "is_siteroot" field in the page table is changed
 if ($GLOBALS['TCA']['pages']['ctrl']['requestUpdate']) {
-	$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] .= ', is_siteroot, tx_siteessentials_sitemap_exclude';
+	$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] .= ', is_siteroot'.($enableSitemapFunctionality ? : ', tx_siteessentials_sitemap_exclude');
 } else {
-	$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] = 'is_siteroot, tx_siteessentials_sitemap_exclude';
+	$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] = 'is_siteroot'.($enableSitemapFunctionality ? : ', tx_siteessentials_sitemap_exclude');
 }
 
 // Adds a palette for the xml_sitemap
@@ -164,6 +174,12 @@ $tempColumns = array(
 		),
 	),
 );
+
+if (!$enableSitemapFunctionality) {
+	foreach ($sitemapFields as $sitemapField) {
+		$tempColumns[$sitemapField]['config'] = ['type' => 'passthrough'];
+	}
+}
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(

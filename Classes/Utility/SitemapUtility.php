@@ -141,5 +141,15 @@ class SitemapUtility {
 	static public function getRegistredHookObjects($hookName) {
 		return ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_essentials']['hooks'][$hookName] ? : array());
 	}
+
+	/**
+	 * Get Extension Configuration
+	 *
+	 * @return mixed
+	 * @static
+	 */
+	static public function getExtensionConfiguration() {
+		return ($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['site_essentials'] ? unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['site_essentials']) : FALSE);
+	}
 	
 }
